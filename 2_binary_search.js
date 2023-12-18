@@ -27,5 +27,22 @@ function binarySearch(array, item) {
     return position;
 }
 
-console.log(binarySearch(array, 0));
+function recursiveBinarySearch(array, item, start, end) {
+    let middle = Math.floor((start + end) / 2);
+    count += 1;
+    if (item === array[middle]) {
+        return middle;
+    }
+    if (item < array[middle]) {
+        return recursiveBinarySearch(array, item, start, middle - 1);
+    } else {
+        return recursiveBinarySearch(array, item, middle + 1, end);
+    }
+}
+
+console.log('length', array.length);
+console.log(binarySearch(array, 12));
+console.log(`count = ${count}`);
+count = 0;
+console.log(recursiveBinarySearch(array, 12, 0, array.length)); // O(n*n)
 console.log(`count = ${count}`);
